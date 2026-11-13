@@ -118,7 +118,7 @@ It stores:
 
 Project source code is mounted by VS Code and is not stored in this user-state volume.
 
-The GitHub CLI configuration directory is `/home/vscode/.persist/gh` and may contain a GitHub token. Protect this Docker volume carefully. Deleting it also deletes the persisted authentication data.
+The GitHub CLI configuration directory is `/home/vscode/.persist/.config/gh` and may contain a GitHub token. Protect this Docker volume carefully. Deleting it also deletes the persisted authentication data.
 
 ## Common Checks
 

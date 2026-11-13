@@ -118,7 +118,7 @@ docker buildx version
 
 项目源代码由 VS Code 挂载，不保存在该用户状态 volume 中。
 
-GitHub CLI 配置目录为 `/home/vscode/.persist/gh`，其中可能包含 GitHub Token，请妥善保护该 Docker volume。删除该 volume 会同时删除这些持久化认证信息。
+GitHub CLI 配置目录为 `/home/vscode/.persist/.config/gh`，其中可能包含 GitHub Token，请妥善保护该 Docker volume。删除该 volume 会同时删除这些持久化认证信息。
 
 ## 常用检查
 
