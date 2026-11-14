@@ -2,10 +2,10 @@ FROM mcr.microsoft.com/devcontainers/base:bookworm
 
 ARG DEBIAN_FRONTEND=noninteractive
 
-ENV TZ=Asia/Shanghai \
-    LANG=zh_CN.UTF-8 \
-    LANGUAGE=zh_CN:zh \
-    LC_ALL=zh_CN.UTF-8 \
+ENV TZ=Asia/Singapore \
+    LANG=zh_SG.UTF-8 \
+    LANGUAGE=zh_SG:zh_CN:zh \
+    LC_ALL=zh_SG.UTF-8 \
     CLAUDE_CONFIG_DIR=/home/vscode/.claude \
     PATH=/home/vscode/.npm-global/bin:${PATH}
 
@@ -24,8 +24,8 @@ RUN apt-get update \
         sqlite3 \
         zstd \
     && ln -snf /usr/bin/fdfind /usr/local/bin/fd \
-    && sed -i 's/^# *zh_CN.UTF-8 UTF-8/zh_CN.UTF-8 UTF-8/' /etc/locale.gen \
-    && locale-gen zh_CN.UTF-8 \
+    && sed -i 's/^# *zh_SG.UTF-8 UTF-8/zh_SG.UTF-8 UTF-8/' /etc/locale.gen \
+    && locale-gen zh_SG.UTF-8 \
     && ln -snf /usr/share/zoneinfo/${TZ} /etc/localtime \
     && echo "${TZ}" > /etc/timezone \
     && curl -fsSL https://deb.nodesource.com/setup_22.x | bash - \

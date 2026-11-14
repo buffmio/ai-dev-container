@@ -1,35 +1,24 @@
 {
   "name": "AI Dev Container",
   "build": {
-    "dockerfile": "Dockerfile",
-    "context": "."
+    "dockerfile": "Dockerfile"
   },
   "features": {
     "ghcr.io/devcontainers/features/docker-outside-of-docker:1": {
       "moby": false,
-      "dockerDashComposeVersion": "none",
-      "installDockerBuildx": true
+      "dockerDashComposeVersion": "none"
     }
   },
   "securityOpt": [
     "seccomp=unconfined",
     "systempaths=unconfined"
   ],
-  "capAdd": [
-    "SYS_ADMIN"
-  ],
   "workspaceFolder": "${localWorkspaceFolder}",
   "workspaceMount": "source=${localWorkspaceFolder},target=${localWorkspaceFolder},type=bind",
-  "remoteUser": "vscode",
-  "updateRemoteUserUID": true,
   "init": true,
   "mounts": [
     "source=${devcontainerId}-user-state,target=/home/vscode/.persist,type=volume"
   ],
-  "otherPortsAttributes": {
-    "onAutoForward": "notify",
-    "requireLocalPort": false
-  },
   "customizations": {
     "vscode": {
       "extensions": [
@@ -38,7 +27,6 @@
       ],
       "settings": {
         "extensions.ignoreRecommendations": true,
-        "remote.autoForwardPorts": true,
         "remote.restoreForwardedPorts": false
       }
     }

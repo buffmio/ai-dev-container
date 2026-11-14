@@ -10,7 +10,7 @@
 - OpenAI Codex CLI 及 `openai.chatgpt` VS Code 扩展
 - Node.js 22、Git、OpenSSH、ripgrep、fd、jq、tree、rsync、make、sqlite3、Python 3（含 `pip` 和 `venv`）、GitHub CLI 和 ShellCheck
 - Docker CE CLI、Docker Compose 和 Buildx
-- 简体中文 UTF-8 环境，时区为 `Asia/Shanghai`
+- 新加坡简体中文 UTF-8 环境，时区为 `Asia/Singapore`
 - 非 root 的 `vscode` 开发用户
 - Claude Code、Codex、Git、GitHub CLI 和 SSH 配置持久化
 
@@ -96,7 +96,7 @@ docker buildx version
 
 ## Agent 沙箱
 
-开发容器启用了 `CAP_SYS_ADMIN`、`seccomp=unconfined` 和 `systempaths=unconfined`，用于允许 Claude Code 和 Codex 使用 `bubblewrap` 创建子进程沙箱。`CAP_SYS_ADMIN` 用于命名空间和挂载，`systempaths=unconfined` 用于解除 Docker 对 `/proc` 等系统路径的 masked/read-only 限制。
+开发容器启用了 `seccomp=unconfined` 和 `systempaths=unconfined`，用于允许 Claude Code 和 Codex 使用 `bubblewrap` 创建子进程沙箱。`seccomp=unconfined` 允许创建命名空间，`systempaths=unconfined` 用于解除 Docker 对 `/proc` 等系统路径的 masked/read-only 限制。
 
 这些设置会降低开发容器自身的隔离强度，但容器没有启用 `privileged`。由于本模板同时使用 DooD，Docker socket 仍然是通往宿主机的高权限入口。请不要将本模板当作不可信代码的强隔离环境。
 

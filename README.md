@@ -10,7 +10,7 @@
 - OpenAI Codex CLI with the `openai.chatgpt` VS Code extension
 - Node.js 22, Git, OpenSSH, ripgrep, fd, jq, tree, rsync, make, sqlite3, Python 3 (`pip` and `venv`), GitHub CLI, and ShellCheck
 - Docker CE CLI, Docker Compose, and Buildx
-- Simplified Chinese UTF-8 locale with the `Asia/Shanghai` time zone
+- Simplified Chinese (Singapore) UTF-8 locale with the `Asia/Singapore` time zone
 - A non-root `vscode` development user
 - Persistent Claude Code, Codex, Git, GitHub CLI, and SSH configuration
 
@@ -96,7 +96,7 @@ The workspace is mounted at the same absolute path inside and outside the contai
 
 ## Agent Sandboxing
 
-The development container enables `CAP_SYS_ADMIN`, `seccomp=unconfined`, and `systempaths=unconfined` so Claude Code and Codex can use `bubblewrap` to create subprocess sandboxes. `CAP_SYS_ADMIN` supports namespaces and mounts, while `systempaths=unconfined` removes Docker's masked or read-only restrictions on system paths such as `/proc`.
+The development container enables `seccomp=unconfined` and `systempaths=unconfined` so Claude Code and Codex can use `bubblewrap` to create subprocess sandboxes. `seccomp=unconfined` allows creating user and mount namespaces, while `systempaths=unconfined` removes Docker's masked or read-only restrictions on system paths such as `/proc`.
 
 These settings reduce the isolation of the development container itself, although the container is not run with `privileged`. Because the template also exposes the Docker socket, the socket remains the higher-privilege path to the host. Do not treat this template as a strong isolation boundary for untrusted code.
 
